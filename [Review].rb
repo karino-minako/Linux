@@ -276,3 +276,86 @@ iptables -L
 
 5.# vi /etc/hosts.deny
   # sshd : 192.168.100.20
+
+# 12章
+ls -l /dev/sd*
+p
+fdisk /dev/sdc
+m
+n
+p
+1
+1
++1024M
+n
+p
+2
+126
++1024M
+p
+
+t
+2
+L
+82
+w
+:q
+mkfs -t ext3 -c /dev/sdc1
+e2labal /dev/sda1
+e2label /dev/sdc3
+e2label /dev/sdc3 opt2
+e2label /dev/sdc3
+
+mount -t ext3 -o rw /dev/sdc2 /opt
+ls /opt
+df
+umount /opt
+ls /opt
+df
+sdisk -l
+mkswap -c /dev/sda2
+swapon -s
+swapon /dev/sda2
+fdisk -l
+swapon -s
+swapoff -v /dev/sda2
+swapon -s
+df
+vi /etc/fstab
+/dev/sda3 /opt ext3 defaults 12
+mount -a
+df
+reboot
+df
+
+mkdir /media/cdrom
+mount -t iso96660 -o ro /dev/cdrom /media/cdrom
+ls /mesia/cdrom
+umount /media/cdrom
+ls /media/cdrom
+
+cp -p /usr/bin/file .
+ln file file2
+ls -il file*
+rm file1
+./file2
+rm file2
+man less > man-less
+ln -s man-less doc-less
+ls -il *less
+cat doc-less
+
+fsck /dev/sda3
+
+# 10章章末テスト
+1.fdisk -l
+
+2.# プログラムやデータを読み込むためのメモリー領域が無くなったときに、不必要なメモリー領域のデータを退避させる領域
+
+3.ジャーナル機能付加
+コンピュータが急停止し、ファイルのデータがファイルシステムに書き込み途中である場合、処理されていないコマンドを対処します。ファイルの書き込み途中の場合、書き込み終わっていないデータがなくて書き込み終われないので、途中までディスクに保存されているファイルの管理情報を消し、書き込み途中のあファイルが作られなかった状態にする
+
+4.ハードリンクは、別ファイルシステムには作成できない
+シンボリックファイルは、別ファイルシステム間で作成することができる
+
+5.du -s /home/*
